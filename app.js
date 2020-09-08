@@ -1,7 +1,7 @@
 const api = {
   key: "7df5b72b8955de9d3bbfb30a36f25901",
   baseurl: "https://api.openweathermap.org/data/2.5/",
-  imageurl: "http://openweathermap.org/img/wn/",
+  imageurl: "https://openweathermap.org/img/wn/",
 };
 
 window.addEventListener("load", () => {
