@@ -22,24 +22,25 @@ body {
 }
 
 .header input {
+  background-color: #00adb5;
   padding: 5px;
   border: none;
   outline: none;
-  color: #313131;
+  color: #eeeeee;
   font-size: 20px;
-	border-radius: 10px;
+  border-bottom: 2px solid #222831;
 	transition: all 200ms ease;
 }
 
 .header .search-btn {
+  background-color: #393e46;
   font-size: 20px;
   margin-left: 5px;
   padding: 5px;
   border: none;
   outline: none;
-	border-radius: 10px;
   cursor: pointer;
-  color: #313131;
+  color: #eeeeee;
 }
 
 .search-btn:hover{
