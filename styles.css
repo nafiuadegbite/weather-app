@@ -25,19 +25,19 @@ body {
   padding: 5px;
   border: none;
   color: #313131;
-  font-size: 15px;
-	border-radius: 25px;
+  font-size: 17px;
+	border-radius: 10px;
 	transition: all 200ms ease;
 }
 
 .header .search-btn {
-  font-size: 15px;
+  font-size: 17px;
   margin-left: 5px;
   padding: 5px;
   border: none;
-	border-radius: 25px;
+	border-radius: 10px;
   cursor: pointer;
-  color: #393e46;
+  color: #313131;
 }
 
 .search-btn:hover{
