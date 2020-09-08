@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div class="header">
+      <input
+        type="text"
+        autocomplete="country-name"
+        class="search-box"
+        placeholder="Search for a city..."
+        required
+      />
+      <button class="search-btn">Search</button>
+    </div>
+    <main>
+      <section class="location">
+        <div class="city"></div>
+        <div class="date"></div>
+      </section>
+      <div class="current">
+        <div class="temp"></div>
+        <div class="feels-like"></div>
+        <img src="" alt="" class="temp-icon" />
+        <div class="temp-description"></div>
+        <div class="hi-low"></div>
+      </div>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
