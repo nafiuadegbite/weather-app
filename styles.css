@@ -24,17 +24,19 @@ body {
 .header input {
   padding: 5px;
   border: none;
+  outline: none;
   color: #313131;
-  font-size: 17px;
+  font-size: 20px;
 	border-radius: 10px;
 	transition: all 200ms ease;
 }
 
 .header .search-btn {
-  font-size: 17px;
+  font-size: 20px;
   margin-left: 5px;
   padding: 5px;
   border: none;
+  outline: none;
 	border-radius: 10px;
   cursor: pointer;
   color: #313131;
