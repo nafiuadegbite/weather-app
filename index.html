@@ -89,15 +89,14 @@
   </head>
   <body>
     <div class="header">
-      <label>
-        <input
-          type="text"
-          autocomplete="country-name"
-          class="search-box"
-          placeholder="Search for a city..."
-          required
-        />
-      </label>
+      <input
+        type="text"
+        autocomplete="country-name"
+        class="search-box"
+        placeholder="Search for a city..."
+        required
+        aria-label="Search input field"
+      />
       <button class="search-btn">Search</button>
     </div>
     <main>
@@ -116,7 +115,7 @@
     <script src="app.js"></script>
     <script>
       if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("/sw.js")
+        navigator.serviceWorker.register("/sw.js");
       }
     </script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
