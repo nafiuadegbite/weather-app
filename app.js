@@ -117,26 +117,6 @@ const displayResults = (data) => {
   }
 })();
 
-//==================GET LOCATION=================
-// (function getLocation() {
-//   try {
-//     let lon;
-//     let lat;
-
-//     if (navigator.geolocation) {
-//       navigator.geolocation.getCurrentPosition((position) => {
-//         lat = position.coords.latitude;
-//         lon = position.coords.longitude;
-
-//         getResults({ lat: lat, lon: lon });
-//       });
-//     }
-//     displayResultsFromLocal();
-//   } catch (error) {
-//     console.error(error);
-//   }
-// })();
-
 //===================SEARCH QUERY==================
 const setQueryAfterKeypress = (e) => {
   if (e.keyCode == 13) {
@@ -152,3 +132,8 @@ const setQueryAfterClick = (e) => {
 
 searchbox.addEventListener("keypress", setQueryAfterKeypress);
 search_btn.addEventListener("click", setQueryAfterClick);
+
+//==================SERVICE WORKER==================
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js");
+}

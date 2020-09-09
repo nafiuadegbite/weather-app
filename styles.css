@@ -28,14 +28,14 @@ body {
   padding: 5px;
   border: none;
   outline: none;
-  color: white;
+  color: #eeeeee;
   font-size: 20px;
   border-bottom: 2px solid #222831;
   transition: all 200ms ease;
 }
 
 .header input::placeholder {
-  color: white;
+  color: #eeeeee;
 }
 
 .header .search-btn {
