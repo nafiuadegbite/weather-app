@@ -14,6 +14,7 @@ const feels_like = document.querySelector(".feels-like");
 const temp_icon = document.querySelector(".temp-icon");
 const temp_description = document.querySelector(".temp-description");
 const hilow = document.querySelector(".hi-low");
+const date = document.querySelector(".date");
 
 //==================DATE BUILDER=================
 const dateBuilder = (d) => {
@@ -41,17 +42,16 @@ const dateBuilder = (d) => {
     "Saturday",
   ];
 
-  let day = days[d.getDay()];
-  let date = d.getDate();
-  let month = months[d.getMonth()];
-  let year = d.getFullYear();
+  let day = days[d.getUTCDay()];
+  let date = d.getUTCDate();
+  let month = months[d.getUTCMonth()];
+  let year = d.getUTCFullYear();
 
   return `${day} ${date} ${month} ${year}`;
 };
 
 (function displayDate() {
-  let now = new Date();
-  let date = document.querySelector(".date");
+  const now = new Date();
   date.innerHTML = dateBuilder(now);
 })();
 
@@ -71,26 +71,13 @@ async function getResults({ query, lat, lon }) {
 
     const data = await response.json();
 
+    localStorage.setItem("weather", JSON.stringify(data));
+
     displayResults(data);
   } catch (error) {
     console.error(error);
   }
 }
-
-//==================GET LOCATION=================
-window.addEventListener("load", () => {
-  let lon;
-  let lat;
-
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition((position) => {
-      lat = position.coords.latitude;
-      lon = position.coords.longitude;
-
-      getResults({ lat: lat, lon: lon });
-    });
-  }
-});
 
 //===================DISPLAY RESULTS===============
 const displayResults = (data) => {
@@ -105,6 +92,7 @@ const displayResults = (data) => {
   )}<span>℃</span>`;
 
   temp_icon.src = `${api.imageurl}${weather[0].icon}@2x.png`;
+
   temp_icon.alt = `${weather[0].description}`;
 
   temp_description.innerHTML = `${weather[0].description}`;
@@ -113,6 +101,56 @@ const displayResults = (data) => {
     main.temp_max
   )}℃`;
 };
+
+//===================LOCAL STORAGE=================
+function displayResultsFromLocal() {
+  let weatherData;
+  if (localStorage.getItem("weather") === null) {
+    return console.log("no weather information in the local storage");
+  } else {
+    weatherData = JSON.parse(localStorage.getItem("weather"));
+  }
+
+  const { name, sys, main, weather } = weatherData;
+
+  city.innerHTML = `${name}, ${sys.country}`;
+
+  temp.innerHTML = `${Math.floor(main.temp)}<span>℃</span>`;
+
+  feels_like.innerHTML = `Feels like ${Math.floor(
+    main.feels_like
+  )}<span>℃</span>`;
+
+  temp_icon.src = `${api.imageurl}${weather[0].icon}@2x.png`;
+
+  temp_icon.alt = `${weather[0].description}`;
+
+  temp_description.innerHTML = `${weather[0].description}`;
+
+  hilow.innerHTML = `${Math.floor(main.temp_min)}℃ / ${Math.floor(
+    main.temp_max
+  )}℃`;
+}
+
+//==================GET LOCATION=================
+(function getLocation() {
+  try {
+    let lon;
+    let lat;
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+
+        getResults({ lat: lat, lon: lon });
+      });
+    }
+    displayResultsFromLocal();
+  } catch (error) {
+    console.error(error);
+  }
+})();
 
 //===================SEARCH QUERY==================
 const setQueryAfterKeypress = (e) => {
