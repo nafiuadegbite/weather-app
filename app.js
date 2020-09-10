@@ -6,7 +6,9 @@ const api = {
 };
 
 //=================DOM ELEMENTS=================
-const searchbox = document.querySelector(".search-box");
+const searchbox = new google.maps.places.SearchBox(
+  document.querySelector(".search-box")
+);
 const search_btn = document.querySelector(".search-btn");
 const city = document.querySelector(".city");
 const temp = document.querySelector(".temp");
@@ -130,8 +132,15 @@ const setQueryAfterClick = (e) => {
   getResults({ query: query });
 };
 
-searchbox.addEventListener("keypress", setQueryAfterKeypress);
+searchbox.addListener("keypress", setQueryAfterKeypress);
 search_btn.addEventListener("click", setQueryAfterClick);
+searchbox.addListener("places_changed", () => {
+  const places = searchBox.getPlaces();
+
+  if (places.length == 0) {
+    return;
+  }
+});
 
 //==================SERVICE WORKER==================
 if ("serviceWorker" in navigator) {
