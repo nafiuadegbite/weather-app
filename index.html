@@ -80,12 +80,18 @@
       href="images/favicon-16x16.png"
     />
     <link
-      rel="stylesheet"
+      rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
       integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
       crossorigin="anonymous"
-      media="all"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    /></noscript>
     <link
       rel="preload"
       href="styles.css"
@@ -127,9 +133,9 @@
             <div class="date">-</div>
           </div>
           <div class="current">
-            <div class="temp"></div>
+            <div class="temp">- ℃</div>
             <div class="feels-like"></div>
-            <img src="./images/unknown.png" alt="" class="temp-icon" />
+            <img src="" alt="" class="temp-icon" />
             <div class="temp-description">-</div>
             <div class="hi-low"></div>
           </div>
