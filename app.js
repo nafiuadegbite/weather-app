@@ -149,14 +149,8 @@ const displayResults = (data) => {
   if (localStorage.getItem("weather") !== null) {
     let weatherData = JSON.parse(localStorage.getItem("weather"));
 
-    const {
-      current,
-      timezone,
-      name,
-      country,
-      temp_max,
-      temp_min,
-    } = weatherData;
+    const { current, timezone, name, country, temp_max, temp_min } =
+      weatherData;
 
     results(current, timezone, name, country, temp_max, temp_min);
   }
@@ -208,3 +202,5 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("/sw.js");
 }
 //==================================================
+
+const a = 2;
